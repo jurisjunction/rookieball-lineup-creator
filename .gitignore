@@ -1,0 +1,6 @@
+# .gitignore
+flask_session/
+*.db
+__pycache__/
+*.py[cod]
+*.log

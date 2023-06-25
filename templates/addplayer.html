@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Players
+{% endblock %}
+
+{% block main %}
+
+<form action="/addplayer" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="name" name="name" placeholder="Name" type="text">
+    </div>
+
+    <div class="mb-3">
+        <input autocomplete="off" class="form-control mx-auto w-auto" id="jersey" name="jersey" placeholder="Jersey number" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Add Player!</button>
+</form>
+
+{% endblock %}
+

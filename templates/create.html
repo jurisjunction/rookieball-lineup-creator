@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Team
+{% endblock %}
+
+{% block main %}
+    <form action="/create" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="teamname" name="teamname" placeholder="Team name" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Create Team</button>
+    </form>
+{% endblock %}
+

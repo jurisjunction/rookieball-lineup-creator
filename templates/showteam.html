@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Team
+{% endblock %}
+
+{% block main %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-start">Player Name</th>
+                <th class="text-start">Jersey Number</th>
+                <th class="text-start">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in team %}
+                <tr>
+                    <td class="text-start">{{ player.name }}</td>
+                    <td class="text-start">{{ player.jersey  }}</td>
+                    <td class="text-start">
+                        <form action="/deleteplayer" method="post">
+                            <input type="hidden" name="player_id" value="{{ player.id }}">
+                            <button type="submit" class="btn btn-danger">Delete Player</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="/addplayer" role="button">Add Player!</a>
+
+{% endblock %}

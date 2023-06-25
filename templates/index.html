@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Team
+{% endblock %}
+
+{% block main %}
+
+    <form action="/" method="post">
+    <select class="form-select mx-auto w-auto" name="team">
+        <option disabled selected>Teams</option>
+
+        {% for team in teams %}
+            <option value="{{ team.name }}">{{ team.name }}</option>
+        {% endfor %}
+    </select>
+
+    <button class="btn btn-primary" type="submit">Show team</button>
+
+
+{% endblock %}

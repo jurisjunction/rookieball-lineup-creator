@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Lineup
+{% endblock %}
+
+{% block main %}
+
+
+    <h2>Player Availability</h2>
+        <form id="availability-form" action="/lineup" method="post">
+            <div class="input-group">
+                {% for player in team %}
+                    <div class="form-check">
+                        <input class="form-check-input me-1" type="checkbox" name="player-availability" value="{{ player.id }}" id="player{{ player.id }}" {% if player.id|int in availability %}checked{% endif %} onchange="updateAvailablePlayers()">
+                        <label class="form-check-label me-3" for="player{{ player.id }}">
+                            {{ player.name }}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary" name="submit-button" value="update-availability">Update Availability</button>
+        </form>
+
+
+    <h2>First Inning Lineup</h2>
+    <form id="lineup-form" action="/setlineup" method="post">
+
+        {% for position in positions %}
+            <div class="col-4">
+                <div class="input-group mb-3">
+                    <label for="position{{ position.id }}">{{ position.name }}</label>
+                    <select class="form-control form-control-sm" id="position{{ position.id }}" name="{{ position.id }}">
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                </div>
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary" name="submit-botton" value="set-lineup">Set Lineup</button>
+    </form>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='lineup.js') }}"></script>
+{% endblock %}
